@@ -2,11 +2,8 @@
 
 **Bake a character's macros, action bars and keybindings into a file, then redeploy the whole layout onto a fresh character in one command.**
 
-Rerolling alts and twinks means rebuilding the same bars every time: recreate the macros, drag every spell and macro back to the right slot, redo the keybinds. MacroDeploy captures a *template* character's full setup once, bakes it into `Profile.lua`, and replays it onto any new character — including the classic trick of placing macros on the bar *before* their spells are even learned.
+Rerolling alts and twinks means rebuilding the same bars every time: recreate the macros, drag every spell and macro back to the right slot, redo the keybinds. MacroDeploy captures a *template* character's full setup once, bakes it into `Profile.lua`, and replays it onto any new character. This can be used to setup your Forever launch keybinds and macros on a Forever Beta character.
 
-## Why it works
-
-In WoW you can drag a **macro** onto an action slot even when the spell it casts is not yet trained. A level‑1 character can therefore carry a complete, correctly‑placed bar from the very first login, and each button lights up the moment you learn its spell. MacroDeploy automates that: it (re)creates any missing macros, places everything by name, and quietly parks anything not yet placeable — an unlearned spell, a missing item — in a retry queue that fills it in as you level.
 
 ## Installation
 
@@ -18,8 +15,6 @@ git clone https://github.com/hybris-code/MacroDeploy.git
 ```
 
 Or download the ZIP and extract it there. The `.toc` must sit **directly** inside `Interface/AddOns/MacroDeploy/` — not double‑nested (`.../MacroDeploy/MacroDeploy/`), which will not load.
-
-Enable **MacroDeploy** in the character‑select AddOns list, then `/md diag` in‑game to confirm it loaded and that every required API resolved.
 
 ## Quick start
 
