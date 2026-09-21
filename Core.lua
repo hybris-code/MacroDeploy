@@ -4,7 +4,10 @@
 local ADDON, NS = ...
 local P = NS.Profile
 
-local NUM_SLOTS        = _G.MAX_ACTIONBAR_SLOTS or 180
+-- Scan at least 180 slots so custom bar addons (e.g. EllesmereUI, which pages
+-- buttons up to slot 180) are fully covered even if the client reports fewer.
+-- Empty/absent slots simply return nil, so over-scanning is harmless.
+local NUM_SLOTS        = math.max(_G.MAX_ACTIONBAR_SLOTS or 0, 180)
 local MAX_ACCOUNT      = _G.MAX_ACCOUNT_MACROS or 120
 local MAX_CHARACTER    = _G.MAX_CHARACTER_MACROS or 18
 local FALLBACK_ICON    = 134400 -- INV_Misc_QuestionMark

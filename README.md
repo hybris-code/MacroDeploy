@@ -94,10 +94,19 @@ Two client‑specific quirks are handled in code — worth knowing if you fork:
 - **Macro‑slot names come from `GetActionText`.** On this client `GetActionInfo` returns a macro's *resolved spell id* rather than a macro index, so slot names are read with `GetActionText(slot)`.
 - **Don't add `## AllowLoadGameType: retail, classic`** to the `.toc`. Those tokens don't exist on this client (valid ones: `standard, vanilla, tbc, wrath, cata, mists, camelot`); a mismatched line silently hides the addon from the AddOns list.
 
+### Custom UI suites (ElvUI, EllesmereUI, Bartender4, …)
+
+These replace the bars but keep each button's *contents* on Blizzard's action slots, so MacroDeploy deploys your spells, macros and items into them unchanged (slots `1`–`180` are scanned). What differs between suites is **how they store keybinds**:
+
+- **ElvUI** writes its bar keybinds into the standard binding system (`SaveBindings`) and only uses override bindings for routing — so MacroDeploy captures and redeploys them like any other binding.
+- **EllesmereUI** stores its bar keybinds in its *own* saved variables (`EAB.db.profile`) and applies them as override bindings, outside the standard system — so MacroDeploy cannot see or set them.
+
+**Rule of thumb:** the UI suite owns its layout and any keybinds it keeps in its own saved variables (carry those with the suite's own profile / import‑export); MacroDeploy owns macros, action‑slot contents and standard keybinds.
+
 ## Limitations
 
-- It does **not** manage Bartender4 / ElvUI's own bar configuration (visibility, paging, state conditions). Those live outside Blizzard's action slots — export them from the bar addon's own profile string.
-- Only Blizzard action‑slot contents, macros and keybindings are captured.
+- It does **not** manage a UI suite's own configuration — ElvUI / EllesmereUI / Bartender4 bar layout, visibility, paging, styling, or keybinds a suite keeps in its own saved variables. Those live outside Blizzard's action slots; carry them with the suite's own profile / import‑export.
+- Only Blizzard action‑slot contents, macros and standard keybindings are captured.
 
 ## License
 
