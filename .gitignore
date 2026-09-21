@@ -1,0 +1,40 @@
+# ── OS cruft ────────────────────────────────────────────────
+.DS_Store
+._*
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# ── Editors / IDEs ──────────────────────────────────────────
+.vscode/
+.idea/
+.vs/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# ── Lua artifacts ───────────────────────────────────────────
+*.luac
+luac.out
+
+# ── Packager / release output ───────────────────────────────
+# BigWigs/CurseForge packager output and release archives
+.release/
+*.zip
+*.tar.gz
+
+# ── Backups / scratch ───────────────────────────────────────
+*.bak
+*.orig
+*.tmp
+
+# ── Personal profile (intentionally NOT ignored) ────────────
+# Profile.lua ships as an empty template and is REQUIRED for the addon
+# to load (it is listed in the .toc), so it stays tracked. If you would
+# rather keep your own `/md export` out of the repo, uncomment the line
+# below AND keep a committed template (e.g. Profile.lua.example), or the
+# addon will fail to load for anyone who clones it.
+# Profile.lua

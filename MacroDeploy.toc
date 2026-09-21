@@ -1,7 +1,7 @@
 ## Interface: 16001, 120105, 120100
 ## Title: MacroDeploy
 ## Notes: Deploys a baked macro / action bar / keybind profile onto a fresh character.
-## Author: jchrstoll
+## Author: hybris-code
 ## Version: 1.0.0
 ## SavedVariables: MacroDeployDB
 ## SavedVariablesPerCharacter: MacroDeployCharDB
