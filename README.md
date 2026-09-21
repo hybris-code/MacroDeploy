@@ -2,7 +2,7 @@
 
 **Bake a character's macros, action bars and keybindings into a file, then redeploy the whole layout onto a fresh character in one command.**
 
-Rerolling alts and twinks means rebuilding the same bars every time: recreate the macros, drag every spell and macro back to the right slot, redo the keybinds. MacroDeploy captures a *template* character's full setup once, bakes it into `Profile.lua`, and replays it onto any new character. This can be used to setup your Forever launch keybinds and macros on a Forever Beta character.
+MacroDeploy captures a *template* character's full setup (keybindings, macros, assignment of macros/spells and items on bars) once, bakes it into `Profile.lua`, and replays it onto any new character. This can be used to setup your Forever launch keybinds and macros on a Forever Beta character.
 
 
 ## Installation
