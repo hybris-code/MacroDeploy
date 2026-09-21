@@ -1,0 +1,11 @@
+## Interface: 16001, 120105, 120100
+## Title: MacroDeploy
+## Notes: Deploys a baked macro / action bar / keybind profile onto a fresh character.
+## Author: jchrstoll
+## Version: 1.0.0
+## SavedVariables: MacroDeployDB
+## SavedVariablesPerCharacter: MacroDeployCharDB
+## IconTexture: Interface\Icons\INV_Misc_Book_09
+
+Profile.lua
+Core.lua
