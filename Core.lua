@@ -9,7 +9,11 @@ local P = NS.Profile
 -- Empty/absent slots simply return nil, so over-scanning is harmless.
 local NUM_SLOTS        = math.max(_G.MAX_ACTIONBAR_SLOTS or 0, 180)
 local MAX_ACCOUNT      = _G.MAX_ACCOUNT_MACROS or 120
-local MAX_CHARACTER    = _G.MAX_CHARACTER_MACROS or 18
+-- MAX_CHARACTER_MACROS lives in the load-on-demand Blizzard_MacroUI, so it is
+-- usually nil at file load; resolve it lazily. The Forever client reports a
+-- stale 18 while actually allowing 30, so never go below 30 - CreateMacro
+-- itself fails (and is reported) if the pool really is full.
+local function MaxCharacter() return math.max(_G.MAX_CHARACTER_MACROS or 0, 30) end
 local FALLBACK_ICON    = 134400 -- INV_Misc_QuestionMark
 
 -- ===========================================================================
@@ -421,7 +425,7 @@ local function deployMacros()
     local map = existingMacroMap()
     local numAccount, numChar = API.GetNumMacros()
     local freeAccount = MAX_ACCOUNT - (numAccount or 0)
-    local freeChar    = MAX_CHARACTER - (numChar or 0)
+    local freeChar    = MaxCharacter() - (numChar or 0)
 
     for _, m in ipairs(P.macros) do
         local have = map[m.name]
@@ -685,7 +689,7 @@ local function Diag()
     print(("|cff33ccffMacroDeploy|r diagnostics - client %s.%s, interface %s"):format(
         tostring(version), tostring(build), tostring(iface)))
     print(("  action slots scanned: %d | macro pool: %d account / %d character"):format(
-        NUM_SLOTS, MAX_ACCOUNT, MAX_CHARACTER))
+        NUM_SLOTS, MAX_ACCOUNT, MaxCharacter()))
     local names = {
         "CreateMacro", "EditMacro", "GetMacroInfo", "GetNumMacros", "GetMacroIndexByName",
         "PickupMacro", "PlaceAction", "HasAction", "GetActionInfo", "GetActionText",

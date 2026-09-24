@@ -78,7 +78,7 @@ Deployment is blocked unless every guard passes; override with `/md apply force`
 
 ## How deployment works
 
-- **Macros first, by name.** Missing macros are created (respecting the 120‑account / 18‑character pools, 16‑char names, 255‑char bodies); actions are then placed by macro *name*, never by a fragile index.
+- **Macros first, by name.** Missing macros are created (respecting the 120‑account / 30‑character pools, 16‑char names, 255‑char bodies); actions are then placed by macro *name*, never by a fragile index.
 - **Deferred placement.** A slot whose spell isn't trained or whose item isn't in bags goes to a retry queue, replayed on `PLAYER_LEVEL_UP`, `SPELLS_CHANGED`, `LEARNED_SPELL_IN_TAB` / `LEARNED_SPELL_IN_SKILL_LINE` and `BAG_UPDATE_DELAYED`.
 - **Full keybind sweep.** Bindings are read across the entire key × modifier space instead of walking `GetNumBindings()`, so `CLICK` bindings created by Bartender4 / ElvUI are captured too.
 - **API compatibility shims.** Every API call resolves globals first, then `C_Spell` / `C_Item` / `C_ActionBar`; if a required API is missing the deploy aborts cleanly instead of half‑applying.
